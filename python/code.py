@@ -21,11 +21,12 @@ seq_length = 25
 dataX=[]
 dataY=[]
 
-for i in range(0,n_chars - seq_length):
-    seq_in = raw_text[i:i+seq_length]
-    seq_out = raw_text[i+seq_length]
-    dataX.append([char_to_int[c] for c in seq_in])
-    dataY.append(char_to_int[seq_out])
+for line in raw_text.split("\n"):
+    for i in range(0,len(line) - seq_length):
+        seq_in = line[i:i+seq_length]
+        seq_out = line[i+seq_length]
+        dataX.append([char_to_int[c] for c in seq_in])
+        dataY.append(char_to_int[seq_out])
 n_patterns = len(dataX)
 print ("Total patterns:" + str(n_patterns))
 
